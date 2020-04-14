@@ -1,38 +1,177 @@
 .App {
   text-align: center;
+  font-size: 10pt;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body, #root  {
+  height: 100%;
+  width: auto;
+  margin: 0;
+  background-color: rgba(23,23,23,1);
+  color: rgba(180,180,180,1)
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.map, #map, .overview, #overview {
+  height: 100%;
+  width: auto;
+  margin: 0;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30,30,30,1); 
+}
+
+.button {
+  display:inline-block;
+  padding:1em 1.4em;
+  margin:1em 0.3em 0.3em 0;
+  width: 100%;
+  border: none;
+  border-radius:0.15em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-weight:400;
+  color:rgba(180,180,180,1);
+  background-color: rgba(47,47,49,0.75);
+  box-shadow:inset 0 -0.6em 0 -0.35em var(--disabledTabColor);
+  text-align:center;
+  position:relative;
+  transition: all 1s;
+  outline: none;
+  }
+  .button:hover{
+    background-color: rgba(47,47,49,1);
+    color: #ffffff;
+    }
+  .button:active{
+    background-color: rgba(47,47,49,1);
+    color:#ffffff;
+  top:0.1em;
+  }
+  @media all and (max-width:30em){
+   .button {
+  display:block;
+  margin:0.4em auto;
+  }
+  }
+ 
+::-webkit-scrollbar-thumb {
+  background: rgba(180,180,180,1); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(60,60,60,1); 
+}
+
+li {
+  list-style-type:none;
+  color: rgba(180,180,180,1)
+}
+
+li:hover {
+  color: rgba(179,0,0,1);
+  cursor: pointer;  
+}
+
+.loading span {
+  width: 15px;
+  height: 15px;
+  margin: 15% 4px;
+  background-color: #5babea;
+  border-radius: 50%;
+  display: inline-block;
+  animation-name: loadingDots;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.loading span:nth-child(2) {
+  animation-delay: 0.5s
+}
+
+.loading span:nth-child(3) {
+  animation-delay: 1s
+}
+
+
+@keyframes loadingDots {
+  20%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(-20px);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.infobox {
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  background: rgba(23,23,23,0.5);
+  border: 1px solid rgba(180,180,180,1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 4000;
+  vertical-align: middle;
+  color: rgba(180,180,180,1);
+  transition: all 1s;
+  text-align: center;
+  line-height: 20px;
+  outline: none !important;
+}
+.infobox:hover{
+  color:#ffffff;
+  background-color: rgba(60,60,60,0.5);
 }
 
-.App-link {
-  color: #61dafb;
+.tab {
+  display: inline-flex;
+  padding: 5px;
+  margin: 5px;
+  transition: all 1s;
+  color: rgba(120,120,120,0.75);
+  background-color: rgba(30,30,30,0.75);
+  cursor: pointer; 
+}
+.activeTab {
+  display: inline-flex;
+  padding: 5px;
+  margin: 5px;
+  transition: all 1s;
+  color: #ffffff;
+  background-color: rgba(47,47,49,1);
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.overlayContainer{
+  position: absolute; 
+  display: block;
+  width: 100%; 
+  height: 100%; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.overlay {
+  position: absolute; 
+  display: block;
+  width: 100%; 
+  height: 100%; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(23,23,23,0.9); 
+  cursor: pointer; 
 }

@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Row from './components/Row';
+import RowTwo from './components/RowTwo';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        
+        <Row
+          color={[
+            'rgba(23,23,23,1)',
+            'rgba(23,23,23,1)',
+            'rgba(23,23,23,1)',
+          ]}
+          height='50vh'
+          padding='5px'       
+        />     
+        <RowTwo
+          color={[
+            'rgba(23,23,23,1)',
+            'rgba(23,23,23,1)',
+            'rgba(23,23,23,1)',
+          ]}
+          height='50vh'
+          padding='5px'       
+        />           
+      </div>
+
+
+    </>
   );
 }
 
