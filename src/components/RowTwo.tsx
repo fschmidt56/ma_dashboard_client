@@ -9,6 +9,10 @@ import TabContent from './TabContent';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import Infobox from './InfoBox';
+import UserInfo from './UserInfo';
+import Imprint from  './Imprint';
+import { blueColors, greenColors } from '../utils/MapStyles';
+import { AppLayout } from '../utils/Config';
 
 const RowTwo = (props: IRowProps) => {
     const district = useSelector((state: RootState) => state.currentDistrictState.district);
@@ -21,7 +25,7 @@ const RowTwo = (props: IRowProps) => {
 
     useEffect(() => {
 
-    },[district])
+    }, [district])
 
     return (
         <>
@@ -30,6 +34,7 @@ const RowTwo = (props: IRowProps) => {
                     backgroundColor: color[0],
                     height: height,
                     padding: padding,
+                    borderBottom: AppLayout.border,
                 }}
                     content={
                         <DistrictInfo
@@ -40,23 +45,10 @@ const RowTwo = (props: IRowProps) => {
                     }
                 />
                 <Column style={{
-                    backgroundColor: color[1],
-                    height: height,
-                    padding: padding,
-                }}
-                            
-                    content={
-                        <>
-                        <Infobox faIcon='fa fa-cogs' />
-                        'Extending Volunteered Geographic Information (VGI) with Geospatial Software as a Service: Participatory Asset Mapping Infrastructures for Urban Health, geoserver credetials, postgres user, Diagramm Legende Karte, selected Features dynamischer,  sql injection, loading while fetching, Tabs diagramm switch gesamt stadtteil' 
-                        </>
-                        }
-               
-                />
-                <Column style={{
                     backgroundColor: color[2],
                     height: height,
                     padding: padding,
+                    borderBottom: AppLayout.border,
                 }}
                     content={
                         <>
@@ -67,8 +59,8 @@ const RowTwo = (props: IRowProps) => {
                                         id='0'
                                         key='stadtgebiet'
                                         chartHeading='Köln'
-                                        colors={['rgba(179,0,0,0.75)', 'rgba(40,150,0,0.5)']}
-                                        hoverColors={['rgba(179,0,0,1)', 'rgba(40,150,0,1)']}
+                                        colors={[greenColors[5], blueColors[5]]}
+                                        hoverColors={[greenColors[6], blueColors[6]]}
                                         urlToFetch={proxyUrls[5]}
                                     />
                                 </TabContent>
@@ -77,17 +69,39 @@ const RowTwo = (props: IRowProps) => {
                                         id='1'
                                         key='stadtteil'
                                         chartHeading={district}
-                                        colors={['rgba(234,160,91,0.75)', 'rgba(91,171,234,0.5)']}
-                                        hoverColors={['rgba(234,160,91,1)', 'rgba(91,171,234,1)']}
+                                        colors={[greenColors[5], blueColors[5]]}
+                                        hoverColors={[greenColors[6], blueColors[6]]}
                                         //@ts-ignore
-                                        urlToFetch={`${proxyUrls[8]+district}`}
+                                        urlToFetch={`${proxyUrls[8] + district}`}
                                     />
                                 </TabContent>
                             </TabsComp>
-
-
                         </>
                     }
+                />
+                <Column style={{
+                    backgroundColor: color[1],
+                    height: height,
+                    padding: padding,
+                    borderBottom: AppLayout.border,
+                }}
+
+                    content={
+                        <>
+                            <Infobox
+                                faIcon='fa fa-info'
+                                overlayContent={
+                                    <Imprint />
+                                }
+                            />
+                            {/* 'Extending Volunteered Geographic Information (VGI) with Geospatial Software as a Service: Participatory Asset Mapping Infrastructures for Urban Health, postgres user, selected Features dynamischer,  sql injection,' */}
+                            <UserInfo
+                                heading='Projektinfo'
+                            />
+                        </>
+
+                    }
+
                 />
             </div>
         </>

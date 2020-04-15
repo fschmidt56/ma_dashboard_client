@@ -7,7 +7,7 @@ import { bbox as bboxStrategy } from 'ol/loadingstrategy';
 import VectorLayer from 'ol/layer/Vector';
 import XYZSource from 'ol/source/XYZ';
 import { baseLayerUrl, view } from './MapConfig';
-import Style, { StyleFunction } from "ol/style/Style";
+import { StyleFunction } from "ol/style/Style";
 
 
 export class MapUtils {

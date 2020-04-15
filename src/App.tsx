@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Row from './components/Row';
 import RowTwo from './components/RowTwo';
+import { appColors } from './utils/Config';
 
 function App() {
   return (
@@ -10,18 +11,18 @@ function App() {
         
         <Row
           color={[
-            'rgba(23,23,23,1)',
-            'rgba(23,23,23,1)',
-            'rgba(23,23,23,1)',
+           appColors[0],
+           appColors[0],
+           appColors[0],
           ]}
           height='50vh'
           padding='5px'       
         />     
         <RowTwo
           color={[
-            'rgba(23,23,23,1)',
-            'rgba(23,23,23,1)',
-            'rgba(23,23,23,1)',
+            appColors[0],
+            appColors[0],
+            appColors[0],
           ]}
           height='50vh'
           padding='5px'       

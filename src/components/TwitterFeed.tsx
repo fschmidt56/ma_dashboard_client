@@ -9,8 +9,9 @@ const TwitterFeed = (props: ITwitterProps) => {
     useEffect(() => {
         const anchor = document.createElement('a');
         anchor.setAttribute('class', 'twitter-timeline');
+        anchor.setAttribute('data-tweet-limit', '15');
         anchor.setAttribute('data-theme', 'light');
-        anchor.setAttribute('data-chrome', 'noheader nofooter noborders');
+        anchor.setAttribute('data-chrome', 'transparent noheader nofooter noborders');
         anchor.setAttribute('href', profileUrl);
         document.getElementsByClassName('twitter-embed')[0].appendChild(anchor);
 

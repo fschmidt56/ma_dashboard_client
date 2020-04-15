@@ -4,12 +4,14 @@ import Legend from './Legend';
 
 const Overlay = (props: IOverlayProps) => {
 
+    const {
+        overlayContent
+    } =  props
+
     return (
         <>
             <div className='overlay' >
-                <Legend
-                    title='Legende'
-                />
+               {overlayContent}
             </div>
         </>
     )

@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { ILegendProps } from '../types/types';
-import { useDispatch, useSelector } from 'react-redux';
-import { setClasses } from '../redux/actions/setClassesAction';
+import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
-import Loading from './Loading';
+import { blueColors, greenColors } from '../utils/MapStyles';
 
 const Legend = (props: ILegendProps) => {
 
     const classes = useSelector((state: RootState) => state.currentClassesState.classes);
     
-    const [colors, setColors] = useState([
-        'rgba(180,180,180,0.75)',
-        'rgba(254,240,217,0.75)',
-        'rgba(253,212,158,0.75)',
-        'rgba(253,187,132,0.75)',
-        'rgba(252,141,89,0.75)',
-        'rgba(227,74,51,0.75)',
-        'rgba(179,0,0,0.75)',
-    ])
+    const [colors, setColors] = useState(greenColors)
 
     function renderSvg() {
         return colors.map((child: any, index: number) => (

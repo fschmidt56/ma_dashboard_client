@@ -1,3 +1,25 @@
+:root {
+  --rubgrey: rgba(241, 241, 241, 0.65);
+  --rubblue: rgba(0,53,96,0.65);
+  --rubgreen: rgba(141,174,16,0.65);
+  --rubgreyHover: rgba(241, 241, 241, 0.85);
+  --rubblueHover: rgba(0,53,96,0.85);
+  --rubgreenHover: rgba(141,174,16,0.85);
+}
+
+a {
+  color: var(--rubgreen);
+}
+a:hover {
+  color: var(--rubgreenHover);
+}
+
+img {
+  height: auto;
+  width: 75%;
+  padding: 20px;
+}
+
 .App {
   text-align: center;
   font-size: 10pt;
@@ -7,8 +29,8 @@ html, body, #root  {
   height: 100%;
   width: auto;
   margin: 0;
-  background-color: rgba(23,23,23,1);
-  color: rgba(180,180,180,1)
+  background-color: var(--rubgrey);
+  color: var(--rubblue);
 }
 
 .map, #map, .overview, #overview {
@@ -26,7 +48,7 @@ html, body, #root  {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(30,30,30,1); 
+  background: var(--rubblue);
 }
 
 .button {
@@ -39,22 +61,21 @@ html, body, #root  {
   box-sizing: border-box;
   text-decoration:none;
   font-weight:400;
-  color:rgba(180,180,180,1);
-  background-color: rgba(47,47,49,0.75);
-  box-shadow:inset 0 -0.6em 0 -0.35em var(--disabledTabColor);
+  color: var(--rubgreyHover);
+  background-color: var(--rubblue);
+  box-shadow:inset 0 -0.6em 0 -0.35em var(--rubgreen);
   text-align:center;
   position:relative;
   transition: all 1s;
   outline: none;
   }
   .button:hover{
-    background-color: rgba(47,47,49,1);
-    color: #ffffff;
+    background-color: var(--rubblueHover);
     }
   .button:active{
-    background-color: rgba(47,47,49,1);
-    color:#ffffff;
-  top:0.1em;
+    background-color: var(--rubblueHover);
+    color: var(--rubgreenHover);
+    top:0.1em;
   }
   @media all and (max-width:30em){
    .button {
@@ -64,20 +85,17 @@ html, body, #root  {
   }
  
 ::-webkit-scrollbar-thumb {
-  background: rgba(180,180,180,1); 
+  background: var(--rubgrey); 
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(60,60,60,1); 
-}
 
 li {
   list-style-type:none;
-  color: rgba(180,180,180,1)
+  color: var(--rubblue);
 }
 
 li:hover {
-  color: rgba(179,0,0,1);
+  color: var(--rubgreenHover);
   cursor: pointer;  
 }
 
@@ -85,7 +103,7 @@ li:hover {
   width: 15px;
   height: 15px;
   margin: 15% 4px;
-  background-color: #5babea;
+  background-color: var(--rubgreenHover);
   border-radius: 50%;
   display: inline-block;
   animation-name: loadingDots;
@@ -115,22 +133,22 @@ li:hover {
   position:absolute;
   bottom:10px;
   right:10px;
-  background: rgba(23,23,23,0.5);
-  border: 1px solid rgba(180,180,180,1);
+  background: var(--rubgreen);
+  border: 1px solid var(--rubgrey);
   width: 40px;
   height: 40px;
   border-radius: 50%;
   z-index: 4000;
   vertical-align: middle;
-  color: rgba(180,180,180,1);
+  color: var(--rubblue);
   transition: all 1s;
   text-align: center;
   line-height: 20px;
   outline: none !important;
 }
 .infobox:hover{
-  color:#ffffff;
-  background-color: rgba(60,60,60,0.5);
+  color: var(--rubblueHover);
+  background-color: var(--rubgreenHover);
 }
 
 .tab {
@@ -138,8 +156,8 @@ li:hover {
   padding: 5px;
   margin: 5px;
   transition: all 1s;
-  color: rgba(120,120,120,0.75);
-  background-color: rgba(30,30,30,0.75);
+  color: var(--rubblue);
+  background-color: var(--rubgrey);
   cursor: pointer; 
 }
 .activeTab {
@@ -147,8 +165,8 @@ li:hover {
   padding: 5px;
   margin: 5px;
   transition: all 1s;
-  color: #ffffff;
-  background-color: rgba(47,47,49,1);
+  color: var(--rubblueHover);
+  background-color: var(--rubgreenHover);
   cursor: pointer;
 }
 
@@ -172,6 +190,6 @@ li:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(23,23,23,0.9); 
+  background-color: var(--rubgreyHover);
   cursor: pointer; 
 }

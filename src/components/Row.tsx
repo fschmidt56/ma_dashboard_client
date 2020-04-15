@@ -8,6 +8,8 @@ import TwitterFeed from './TwitterFeed';
 import TabContent from './TabContent';
 import TabsComp from './TabsComp';
 import Infobox from './InfoBox'
+import { AppLayout } from '../utils/Config';
+import Legend from './Legend';
 
 const Row = (props: IRowProps) => {
 
@@ -25,6 +27,7 @@ const Row = (props: IRowProps) => {
                     height: height,
                     padding: padding,
                     position: 'relative',
+                    borderBottom: AppLayout.border,
                 }}
                     content={
                         <>
@@ -33,7 +36,13 @@ const Row = (props: IRowProps) => {
                                 mapContainer='map'
                                 proxyUrl={proxyUrls[1]}
                             />
-                            <Infobox faIcon='fa fa-info' />
+                            <Infobox
+                                faIcon='fa fa-info'
+                                overlayContent={
+                                    <Legend
+                                        title='Legende'
+                                    />
+                                } />
                         </>
                     }
                 />
@@ -41,6 +50,7 @@ const Row = (props: IRowProps) => {
                     backgroundColor: color[1],
                     height: height,
                     padding: padding,
+                    borderBottom: AppLayout.border,
                 }}
                     content={
                         <>
@@ -69,10 +79,11 @@ const Row = (props: IRowProps) => {
                     backgroundColor: color[2],
                     height: height,
                     padding: padding,
+                    borderBottom: AppLayout.border,
                 }}
                     content={
                         <TwitterFeed
-                            profileUrl='https://www.twitter.com/rki_de'
+                            profileUrl='https://twitter.com/koeln?lang=de'
                         />
                     }
                 />

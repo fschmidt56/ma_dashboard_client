@@ -3,14 +3,8 @@ import { IInitialClassesState, Actions } from "../types/state_types";
 import { ActionTypes } from '../actions/ActionTypes';
 
 //initialer State
-const initializeMap = async () => {
-    fetch('http://192.168.2.185:8000/range')
-        .then(data => data.json())
-        .then(arr => { initialClassesState.classes = arr}) 
-       }
-initializeMap()       
 const initialClassesState: IInitialClassesState = {
-    classes: [0,100,200,300,400,500],
+    classes: [0,100,200,300,400,500,600],
 }
 
 //reducer 

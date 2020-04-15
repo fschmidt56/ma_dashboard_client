@@ -28,7 +28,7 @@ const DistrictInfo = (props: IDistrictInfoProps) => {
             return;
         }
         else {
-            setFetched(true)
+            setFetched(false)
             fetch(`${proxyUrls[4]}${district}`)
                 .then(response => response.json())
                 .then(data => {
@@ -37,6 +37,7 @@ const DistrictInfo = (props: IDistrictInfoProps) => {
                     //@ts-ignore
                     setDistrictData(values)
                 })
+                .then(() => setFetched(true))
         }
     }
 
@@ -48,9 +49,9 @@ const DistrictInfo = (props: IDistrictInfoProps) => {
         defaultOption.text = defaultText;
 
         dropdown.add(defaultOption);
-        dropdown.addEventListener('change', (e: any) => { 
-            dispatch(setDistrict(e.target!.value)) 
-        }) 
+        dropdown.addEventListener('change', (e: any) => {
+            dispatch(setDistrict(e.target!.value))
+        })
         dropdown.selectedIndex = 0;
         document.getElementsByClassName('dropdown')[0].appendChild(dropdown);
 
@@ -90,10 +91,11 @@ const DistrictInfo = (props: IDistrictInfoProps) => {
                 text='Stadtteildaten abrufen'
                 clickButton={buttonClick}
             />
-            {fetched ? districtData.length === 0 ? <Loading /> :
-                <p>Im gewählten Stadtteil existieren im zu Grunde liegenden Datensatz <b>{districtData[0]}</b> Hausumringe. In <b>{districtData[1]} ({districtData[3]}%)</b> davon haben sich mit Corona infizierte Personen aufgehalten. Nicht betroffen sind somit <b>{districtData[2]} ({districtData[4]}%)</b>.</p>
+            {!fetched ? districtData.length === 0 ? <p>Kein Stadtteil gewählt.</p>
                 :
-                <p>Kein Stadtteil gewählt.</p>
+                <Loading />
+                :
+                <p>Im gewählten Stadtteil existieren im zu Grunde liegenden Datensatz <b>{districtData[0]}</b> Hausumringe. In <b>{districtData[1]} ({districtData[3]}%)</b> davon haben sich mit Corona infizierte Personen aufgehalten. Nicht betroffen sind somit <b>{districtData[2]} ({districtData[4]}%)</b>.</p>
             }
         </>
     )

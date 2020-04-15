@@ -5,27 +5,33 @@ import { FeatureLike } from "ol/Feature";
 
 export const fillOpacity: number = 0.75;
 
-export function defaultStyle(feature: FeatureLike): Style {
-    let style: Style = new Style({
-        fill: new Fill({
-            color: getFillColor(feature.get('count')),
-        }),
-        stroke: new Stroke({
-            color: getFillColor(feature.get('count')),
-        })
-    });
-    return style;
+export function getFillColor(d: number, classes:number[], colorArray: string[]) {
+    return d > classes[6] ? colorArray[6] :
+        d > classes[5] ? colorArray[5] :
+        d > classes[4] ? colorArray[4] :
+        d > classes[3] ? colorArray[3] :
+        d > classes[2] ? colorArray[2] :
+        d > classes[1] ? colorArray[1] :
+        d > classes[0] ? colorArray[0] :
+        'rgba(255,255,255,1)'
 }
-
-export function getFillColor(d: number) {
-    const classborder: number[] = [0,87,173,260,346,433,519];
-       return d > classborder[5] ? `rgba(179,0,0,${fillOpacity})` :
-           d > classborder[4] ? `rgba(227,74,51,${fillOpacity})` :
-           d > classborder[3] ? `rgba(252,141,89,${fillOpacity})` :
-           d > classborder[2] ? `rgba(253,187,132,${fillOpacity})` :
-           d > classborder[1] ? `rgba(253,212,158,${fillOpacity})` :
-           d > classborder[0] ? `rgba(254,240,217,${fillOpacity})` :
-                      `rgba(180,180,180,${fillOpacity})`;
-    }
     
+export const greenColors: string[] = [
+    `rgba(95,95,95,${fillOpacity})`,
+    `rgba(105,108,87,${fillOpacity})`,
+    `rgba(113,120,79,${fillOpacity})`,
+    `rgba(121,134,69,${fillOpacity})`,
+    `rgba(128,147,58,${fillOpacity})`,
+    `rgba(135,160,42,${fillOpacity})`,
+    `rgba(141,174,16,${fillOpacity})`,
+];
 
+export const blueColors:string[] = [
+    `rgba(241,241,241,${fillOpacity})`,
+    `rgba(214,218,227,${fillOpacity})`,
+    `rgba(174,182,200,${fillOpacity})`,
+    `rgba(135,147,173,${fillOpacity})`,
+    `rgba(96,114,146,${fillOpacity})`,
+    `rgba(56,82,121,${fillOpacity})`,
+    `rgba(0,53,96,${fillOpacity})`,
+]

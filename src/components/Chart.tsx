@@ -52,7 +52,7 @@ const Chart = (props: IChartProps) => {
             {
                 fetchChart ?
                     <>
-                        <p>{chartHeading}</p>
+                        <b>{chartHeading}</b>
                         <Doughnut
                             key={id}
                             data={{

@@ -13,7 +13,7 @@ import { FeatureLike } from 'ol/Feature';
 import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
-import { fillOpacity } from '../utils/MapStyles';
+import { getFillColor, blueColors, greenColors } from '../utils/MapStyles';
 
 
 const Basemap = (props: IMapProps) => {
@@ -27,7 +27,7 @@ const Basemap = (props: IMapProps) => {
 
 
     function defaultStyle(feature: FeatureLike): Style {
-        const featureCount = getFillColor(feature.get('count'));
+        const featureCount = getFillColor(feature.get('count'), classes, greenColors);
         let style: Style = new Style({
             fill: new Fill({
                 color: featureCount,
@@ -37,17 +37,6 @@ const Basemap = (props: IMapProps) => {
             })
         });
         return style;
-    }
-
-    function getFillColor(d: number) {
-        return d > classes[6] ? `rgba(179,0,0,${fillOpacity})` :
-            d > classes[5] ? `rgba(227,74,51,${fillOpacity})` :
-                d > classes[4] ? `rgba(252,141,89,${fillOpacity})` :
-                    d > classes[3] ? `rgba(253,187,132,${fillOpacity})` :
-                        d > classes[2] ? `rgba(253,212,158,${fillOpacity})` :
-                            d > classes[1] ? `rgba(254,240,217,${fillOpacity})` :
-                                d > classes[0] ? `rgba(180,180,180,${fillOpacity})` :
-                                    'rgba(255,255,255,1)'
     }
 
     const initialize = async () => {

@@ -1,5 +1,6 @@
 import Map from 'ol/Map';
 
+//interfaces
 export interface IButtonProps {
     text: string,
     clickButton?: () => void,
@@ -26,9 +27,20 @@ export interface IDistrictInfoProps {
     defaultText: string,
 }
 
+export interface IImageProps {
+    link: string,
+    img: string,
+    altText: string,
+}
+
+export interface IImprintProps {
+
+}
+
 export interface IInfoBoxProps {
     faIcon: string,
     onClick?: () => void,
+    overlayContent: JSX.Element | Element,
 }
 
 export interface ILegendProps {
@@ -50,7 +62,7 @@ export interface IMapState {
 }
 
 export interface IOverlayProps {
-
+    overlayContent: JSX.Element | Element
 }
 
 export interface IRowProps {
@@ -79,6 +91,12 @@ export interface ITwitterProps {
     profileUrl: string,
 }
 
+export interface IUserInfoProps {
+    heading: string,
+}
+
+//types
+export type Dict = { [key: string]: string | number };
 
 
 

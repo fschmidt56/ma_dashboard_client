@@ -12,6 +12,7 @@ const InfoBox = (props: IInfoBoxProps) => {
 
     const {
         faIcon,
+        overlayContent
     } = props
 
 
@@ -27,7 +28,9 @@ const InfoBox = (props: IInfoBoxProps) => {
             {
                 visible ?
                     <Overlay
-
+                        overlayContent={
+                            overlayContent
+                        }
                     />
                     :
                     null
