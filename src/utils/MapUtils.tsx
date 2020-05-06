@@ -64,9 +64,17 @@ export class MapUtils {
         this.getGeojson(url)
             .then(data => data)
             .then(featureCollection => featureCollection.jsonb_build_object)
-            .then(features => { return new GeoJSON().readFeatures(features) })
+            .then(features => {
+                if (features.length === 0) {
+                    return Promise.reject(() => console.log('Keine Daten vorhanden.'))
+                }
+                else {
+                    return new GeoJSON().readFeatures(features)
+                }
+            })
             .then(geojson => { return this.createPgSource(geojson) })
             .then(source => { return this.createPgVector(source, style) })
             .then(layer => map!.addLayer(layer))
+            .catch(() => console.log('Keine Daten vorhanden.'))
     }
 }

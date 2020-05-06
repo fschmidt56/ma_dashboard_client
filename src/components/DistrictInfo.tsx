@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IDistrictInfoProps } from '../types/types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setDistrict } from '../redux/actions/setDistrictAction';
-import { RootState } from '../redux/store/store';
-import Button from './Button'
 import { proxyUrls } from '../utils/MapConfig';
 import Loading from './Loading';
 
@@ -11,7 +9,6 @@ const DistrictInfo = (props: IDistrictInfoProps) => {
 
     const [districtData, setDistrictData] = useState([]);
     const [fetched, setFetched] = useState(false);
-    const district = useSelector((state: RootState) => state.currentDistrictState.district)
     const dispatch = useDispatch();
 
     const {
@@ -20,16 +17,19 @@ const DistrictInfo = (props: IDistrictInfoProps) => {
         defaultText,
     } = props
 
+    async function onChange(e: any) {
+        dispatch(setDistrict(e.target!.value))
+    }
 
-    function buttonClick() {
-        if (district === '' || district === defaultText) {
+    function changeText(e: any) {
+        if (e.target.value === '' || e.target.value === defaultText) {
             setDistrictData([])
             setFetched(false);
             return;
         }
         else {
             setFetched(false)
-            fetch(`${proxyUrls[4]}${district}`)
+            fetch(`${proxyUrls[4]}${e.target.value}`)
                 .then(response => response.json())
                 .then(data => {
                     const obj = data[0];
@@ -50,7 +50,8 @@ const DistrictInfo = (props: IDistrictInfoProps) => {
 
         dropdown.add(defaultOption);
         dropdown.addEventListener('change', (e: any) => {
-            dispatch(setDistrict(e.target!.value))
+            onChange(e)
+                .then(() => changeText(e))
         })
         dropdown.selectedIndex = 0;
         document.getElementsByClassName('dropdown')[0].appendChild(dropdown);
@@ -87,10 +88,6 @@ const DistrictInfo = (props: IDistrictInfoProps) => {
         <>
             <p>{title}</p>
             <div className='dropdown' ></div>
-            <Button
-                text='Stadtteildaten abrufen'
-                clickButton={buttonClick}
-            />
             {!fetched ? districtData.length === 0 ? <p>Kein Stadtteil gewählt.</p>
                 :
                 <Loading />

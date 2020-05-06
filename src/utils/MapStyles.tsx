@@ -1,9 +1,10 @@
-import Style from "ol/style/Style";
-import Stroke from "ol/style/Stroke";
-import Fill from "ol/style/Fill";
-import { FeatureLike } from "ol/Feature";
+import Map from 'ol/Map';
+import VectorLayer from "ol/layer/Vector";
+import Style, { StyleFunction } from 'ol/style/Style';
 
 export const fillOpacity: number = 0.75;
+export const selFillOpacity = 0.5;
+export const selColor: string = `rgba(210,0,3,${selFillOpacity})`;
 
 export function getFillColor(d: number, classes:number[], colorArray: string[]) {
     return d > classes[6] ? colorArray[6] :
@@ -15,7 +16,8 @@ export function getFillColor(d: number, classes:number[], colorArray: string[]) 
         d > classes[0] ? colorArray[0] :
         'rgba(255,255,255,1)'
 }
-    
+
+export const selectedStyle: any[] = [selColor, 4]    
 export const greenColors: string[] = [
     `rgba(95,95,95,${fillOpacity})`,
     `rgba(105,108,87,${fillOpacity})`,
@@ -35,3 +37,11 @@ export const blueColors:string[] = [
     `rgba(56,82,121,${fillOpacity})`,
     `rgba(0,53,96,${fillOpacity})`,
 ]
+
+export function updateStyle(currentMap: Map, style: Style | StyleFunction) {
+    const layerArr = currentMap.getLayers().getArray();
+    if (layerArr.length > 1) {
+    const vectorLayer = layerArr[layerArr.length-1] as VectorLayer;
+    vectorLayer.setStyle(style);
+    }
+}

@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import Infobox from './InfoBox';
 import UserInfo from './UserInfo';
-import Imprint from  './Imprint';
+import Imprint from './Imprint';
 import { blueColors, greenColors } from '../utils/MapStyles';
 import { AppLayout } from '../utils/Config';
 
@@ -94,7 +94,7 @@ const RowTwo = (props: IRowProps) => {
                                     <Imprint />
                                 }
                             />
-                            {/* 'Extending Volunteered Geographic Information (VGI) with Geospatial Software as a Service: Participatory Asset Mapping Infrastructures for Urban Health, postgres user, selected Features dynamischer,  sql injection,' */}
+                            {/* 'Extending Volunteered Geographic Information (VGI) with Geospatial Software as a Service: Participatory Asset Mapping Infrastructures for Urban Health, postgres user ' */}
                             <UserInfo
                                 heading='Projektinfo'
                             />

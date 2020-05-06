@@ -13,33 +13,34 @@ import { FeatureLike } from 'ol/Feature';
 import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
-import { getFillColor, blueColors, greenColors } from '../utils/MapStyles';
-
+import { getFillColor, blueColors, greenColors, selectedStyle, updateStyle } from '../utils/MapStyles';
 
 const Basemap = (props: IMapProps) => {
 
     const map = useSelector((state: RootState) => state.currentMapState.map)
-    const fetching = useSelector((state: RootState) => state.currentFetchState.fetching)
+    const fetching = useSelector((state: RootState) => state.currentFetchState.fetching);
     const classes = useSelector((state: RootState) => state.currentClassesState.classes);
+    const district = useSelector((state: RootState) => state.currentDistrictState.district);
     const dispatch = useDispatch();
 
     const { id, mapContainer, proxyUrl } = props
 
-
     function defaultStyle(feature: FeatureLike): Style {
         const featureCount = getFillColor(feature.get('count'), classes, greenColors);
+        const featureStt = feature.get('stt_name');
         let style: Style = new Style({
             fill: new Fill({
-                color: featureCount,
+                color: district === featureStt ? selectedStyle[0] : featureCount,
             }),
             stroke: new Stroke({
-                color: featureCount,
-            })
+                width: district === featureStt ? selectedStyle[1] : 1,
+                color: district === featureStt ? selectedStyle[0] : featureCount,
+            }),
         });
         return style;
     }
 
-    const initialize = async () => {
+    const initializeMap = () => {
         fetch('http://192.168.2.185:8000/range')
             .then(data => data.json())
             .then(arr => {
@@ -56,10 +57,18 @@ const Basemap = (props: IMapProps) => {
                 }
             })
     }
+    const initialize = async () => {
+        if (map === null) {
+           initializeMap()
+        }
+        else {
+            updateStyle(map, defaultStyle)
+        }
+    }
 
     useEffect(() => {
-       initialize()
-    }, [fetching]);
+        initialize();
+    }, [fetching, district]);
 
     return (
         <> {

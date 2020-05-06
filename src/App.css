@@ -51,6 +51,10 @@ html, body, #root  {
   background: var(--rubblue);
 }
 
+select {
+  margin-bottom: 20px;
+}
+
 .button {
   display:inline-block;
   padding:1em 1.4em;
@@ -110,6 +114,7 @@ li:hover {
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  z-index: 8000;
 }
 .loading span:nth-child(2) {
   animation-delay: 0.5s

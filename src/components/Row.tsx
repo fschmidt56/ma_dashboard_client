@@ -40,7 +40,7 @@ const Row = (props: IRowProps) => {
                                 faIcon='fa fa-info'
                                 overlayContent={
                                     <Legend
-                                        title='Legende'
+                                        title='Anzahl besuchter Hausumringe von Infizierten'
                                     />
                                 } />
                         </>
