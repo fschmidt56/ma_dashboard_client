@@ -15,8 +15,8 @@ const Imprint = (props: IImprintProps) => {
                     img={logo}
                     link='https://www.geographie.ruhr-uni-bochum.de/forschung/geomatik/home-news/'
                 />
-                <b>Geographisches Institut | AG Geomatik</b><br></br>
-                <b>Kontakt</b><br></br>
+                <a href='http://www.geographie.ruhr-uni-bochum.de/news/'>Geographisches Institut | AG Geomatik</a><br></br>
+                <b>Kontakt:</b><br></br>
                 <a href='mailto:fabian.schmidt-c8t@rub.de'>Mail</a>
                 <hr></hr>
                 <Image

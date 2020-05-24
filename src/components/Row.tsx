@@ -83,7 +83,7 @@ const Row = (props: IRowProps) => {
                 }}
                     content={
                         <TwitterFeed
-                            profileUrl='https://twitter.com/koeln?lang=de'
+                            profileUrl='https://twitter.com/ruhrunibochum'
                         />
                     }
                 />
