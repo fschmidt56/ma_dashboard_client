@@ -23,16 +23,18 @@ export const view = new View({
     enableRotation: rotationStatus,
 });
 
+export const serverName: string[] = ['http://192.168.2.185:8000', 'http://corona.geomatik.ruhr-uni-bochum.de/api'];
 export const proxyUrls: string[] = [
-    'http://192.168.2.185:8000/boundary',
-    'http://192.168.2.185:8000/corona',
-    'http://192.168.2.185:8000/range',
-    'http://192.168.2.185:8000/districts',
-    'http://192.168.2.185:8000/districtInfo?stt_name=',
-    'http://192.168.2.185:8000/chart',
-    'http://192.168.2.185:8000/maxAffected',
-    'http://192.168.2.185:8000/minAffected',
-    'http://192.168.2.185:8000/districtChart?stt_name=',
+    `${serverName[1]}/boundary`,
+    `${serverName[1]}/corona`,
+    `${serverName[1]}/range`,
+    `${serverName[1]}/districts`,
+    `${serverName[1]}/districtInfo?stt_name=`,
+    `${serverName[1]}/chart`,
+    `${serverName[1]}/maxAffected`,
+    `${serverName[1]}/minAffected`,
+    `${serverName[1]}/districtChart?stt_name=`,
+    `${serverName[1]}/userInfo`,
 ]
 
 

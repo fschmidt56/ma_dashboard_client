@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ILegendProps } from '../types/types';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
-import { blueColors, greenColors } from '../utils/MapStyles';
+import { greenColors } from '../utils/MapStyles';
 
 const Legend = (props: ILegendProps) => {
 

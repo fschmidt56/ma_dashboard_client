@@ -18,26 +18,31 @@ const Chart = (props: IChartProps) => {
     } = props;
 
     useEffect(() => {
-       fetchData() 
+        fetchData()
     }, [urlToFetch])
 
     const fetchData = () => fetch(urlToFetch)
         .then(response => response.json())
         .then(data => {
             const obj = data[0];
-            const values: number[] = Object.keys(obj).map(key => { return obj[key]; });
-            const label: string[] = Object.keys(obj).map(key => { return key; });
-            if (values[0] === null) {
-                setFetchChart(false)
-                setChartData([])
-                setLabels([])
-                return;
+            if (obj === undefined || null) {
+                return null
             }
             else {
-                //@ts-ignore
-                setLabels(label)
-                //@ts-ignore
-                setChartData(values)
+                const values: number[] = Object.keys(obj).map(key => { return obj[key]; });
+                const label: string[] = Object.keys(obj).map(key => { return key; });
+                if (values[0] === null) {
+                    setFetchChart(false)
+                    setChartData([])
+                    setLabels([])
+                    return;
+                }
+                else {
+                    //@ts-ignore
+                    setLabels(label)
+                    //@ts-ignore
+                    setChartData(values)
+                }
             }
         })
         .then(() => setFetchChart(true))

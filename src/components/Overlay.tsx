@@ -1,6 +1,5 @@
 import React from 'react';
 import { IOverlayProps } from '../types/types';
-import Legend from './Legend';
 
 const Overlay = (props: IOverlayProps) => {
 

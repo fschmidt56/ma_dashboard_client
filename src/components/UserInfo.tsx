@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { IUserInfoProps } from '../types/types';
 import Loading from './Loading';
 import { greenColors } from '../utils/MapStyles';
+import { proxyUrls } from '../utils/MapConfig';
 
 const UserInfo = (props: IUserInfoProps) => {
 
@@ -13,12 +14,12 @@ const UserInfo = (props: IUserInfoProps) => {
 
     useEffect(() => {
         let changes: number = 0;
-        fetch('http://192.168.2.185:8000/userInfo')
+        fetch(proxyUrls[9])
             .then(data => data.json())
             .then(res => {
                 setUserCount(res.length)
                 for (let i = 0; i < res.length; i++) {
-                    changes += parseInt(res[i].count);
+                    changes += parseInt(res[i].summe);
                 }
             })
             .then(() => setChangeCount(changes))

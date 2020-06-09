@@ -14,6 +14,7 @@ import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import { getFillColor, blueColors, greenColors, selectedStyle, updateStyle } from '../utils/MapStyles';
+import { proxyUrls } from '../utils/MapConfig';
 
 const Basemap = (props: IMapProps) => {
 
@@ -26,7 +27,7 @@ const Basemap = (props: IMapProps) => {
     const { id, mapContainer, proxyUrl } = props
 
     function defaultStyle(feature: FeatureLike): Style {
-        const featureCount = getFillColor(feature.get('count'), classes, greenColors);
+        const featureCount = getFillColor(feature.get('counter'), classes, greenColors);
         const featureStt = feature.get('stt_name');
         let style: Style = new Style({
             fill: new Fill({
@@ -41,7 +42,7 @@ const Basemap = (props: IMapProps) => {
     }
 
     const initializeMap = () => {
-        fetch('http://192.168.2.185:8000/range')
+        fetch(proxyUrls[2])
             .then(data => data.json())
             .then(arr => {
                 dispatch(setClasses(arr))
