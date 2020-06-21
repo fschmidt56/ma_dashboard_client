@@ -11,6 +11,8 @@ const InfoBox = (props: IInfoBoxProps) => {
     }
 
     const {
+        className,
+        buttonText,
         faIcon,
         overlayContent
     } = props
@@ -19,11 +21,10 @@ const InfoBox = (props: IInfoBoxProps) => {
     return (
         <>
             < button
-                className='infobox'
+                className={className}
                 onClick={toggleOverlay}
             >
-                <i className={faIcon}></i>
-
+                <i className={faIcon}>{buttonText}</i>
             </button>
             {
                 visible ?

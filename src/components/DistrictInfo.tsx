@@ -18,7 +18,10 @@ const DistrictInfo = (props: IDistrictInfoProps) => {
     } = props
 
     async function onChange(e: any) {
-        dispatch(setDistrict(e.target!.value))
+        const regex: RegExp = /^[A-Za-z/äöüÄÖÜß\s]+$/
+        if(regex.test(e.target!.value)) { 
+            dispatch(setDistrict(e.target!.value))
+        }            
     }
 
     function changeText(e: any) {

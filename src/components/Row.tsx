@@ -37,6 +37,7 @@ const Row = (props: IRowProps) => {
                                 proxyUrl={proxyUrls[1]}
                             />
                             <Infobox
+                                className='infobox'
                                 faIcon='fa fa-info'
                                 overlayContent={
                                     <Legend

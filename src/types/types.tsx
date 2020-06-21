@@ -27,6 +27,10 @@ export interface IDistrictInfoProps {
     defaultText: string,
 }
 
+export interface IFooterProps {
+
+}
+
 export interface IImageProps {
     link: string,
     img: string,
@@ -38,7 +42,9 @@ export interface IImprintProps {
 }
 
 export interface IInfoBoxProps {
-    faIcon: string,
+    className?: string,
+    buttonText?: string,
+    faIcon?: string,
     onClick?: () => void,
     overlayContent: JSX.Element | Element,
 }

@@ -209,3 +209,27 @@ li:hover {
     background-color: var(--rubgreyHover);
     cursor: pointer;
 }
+
+.legalbox {
+    position: absolute;
+    font-size: 8px;
+    bottom: 10px;
+    right: 10px;
+    background: var(--rubgreen);
+    border: 1px solid var(--rubgrey);
+    border-radius: 8px;
+    width: auto;
+    height: 25px;
+    z-index: 4000;
+    vertical-align: middle;
+    color: var(--rubblue);
+    transition: all 1s;
+    text-align: center;
+    line-height: 20px;
+    outline: none !important;
+}
+
+.imprinttext {
+    font-size: 8px;
+    padding: 2px;
+}

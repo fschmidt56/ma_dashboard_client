@@ -26,7 +26,7 @@ function App() {
           ]}
           height='50vh'
           padding='5px'       
-        />           
+        />    
       </div>
 
 

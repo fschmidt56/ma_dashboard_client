@@ -31,9 +31,9 @@ const UserInfo = (props: IUserInfoProps) => {
         return [...Array(userCount)].map((e, i) => <i key={i} style={{color: greenColors[6]}} className='fa fa-user fa-2x'></i>)
     }
 
-    function renderChanges() {
-        return [...Array(changeCount)].map((e, i) => <i key={i} style={{color: greenColors[6]}} className='fa fa-edit fa-2x'></i>)
-    }
+    // function renderChanges() {
+    //     return [...Array(changeCount)].map((e, i) => <i key={i} style={{color: greenColors[6]}} className='fa fa-edit fa-2x'></i>)
+    // }
 
     const avg: number = changeCount / userCount
 
@@ -46,9 +46,10 @@ const UserInfo = (props: IUserInfoProps) => {
                     fetchedCount ?
                         <>
                             
-                            <b>{userCount}</b> <p>Nutzer haben Daten beigesteuert.</p>{renderUsers()}<br></br>
-                            <b>{changeCount}</b> <p>Hausumringe sind editiert worden.</p>{renderChanges()}<br></br>
-                            <p>Dies entspricht im Schnitt</p><b>{userCount === 0 ? 0 : avg}</b> Beiträgen je User.
+                            <b>{userCount}</b> <p>Nutzer haben Daten beigesteuert.*</p>{renderUsers()}<br></br>
+                            <b>{changeCount.toFixed(0)}</b> <p>Hausumringe sind editiert worden.*</p>{/* </p>{renderChanges()}<br></br>*/}
+                            <p>Dies entspricht im Schnitt <b>{userCount === 0 ? 0 : avg.toFixed(2)}</b> Beiträgen je User.*</p> 
+                            <p>*Anonyme Beiträge sind hier nicht berücksichtigt.</p>
                         </>
                         :
                         <Loading />

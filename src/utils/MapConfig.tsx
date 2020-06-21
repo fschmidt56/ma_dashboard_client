@@ -23,7 +23,7 @@ export const view = new View({
     enableRotation: rotationStatus,
 });
 
-export const serverName: string[] = ['http://192.168.2.185:8000', 'http://corona.geomatik.ruhr-uni-bochum.de/api'];
+export const serverName: string[] = ['http://ip:port', 'http://corona.geomatik.ruhr-uni-bochum.de/api'];
 export const proxyUrls: string[] = [
     `${serverName[1]}/boundary`,
     `${serverName[1]}/corona`,

@@ -89,7 +89,8 @@ const RowTwo = (props: IRowProps) => {
                     content={
                         <>
                             <Infobox
-                                faIcon='fa fa-info'
+                                className='legalbox'
+                                buttonText='Datenschutz | Impressum'
                                 overlayContent={
                                     <Imprint />
                                 }
